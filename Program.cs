@@ -80,5 +80,16 @@ class Program
             Console.WriteLine("{0}{1}  {2}",
                 new string(' ', 5 - result[i].ToString().Length), result[i],
                 input.Substring(result[i]));
+
+        // Validation.
+        var item = new int[input.Length];
+        for (var i = 0; i < input.Length; i++) item[i] = i;
+        item = item.OrderBy(x => input.Substring(x)).ToArray();
+        for (var i = 0; i < result.Length; i++)
+            if (item[i] != result[i])
+            {
+                Console.WriteLine("Error");
+                return;
+            }
     }
 }
